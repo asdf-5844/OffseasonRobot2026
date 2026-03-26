@@ -23,6 +23,21 @@ android {
     }
 }
 
+repositories {
+    maven {
+        url "https://repo.dairy.foundation/releases"
+    }
+
+    // For Snapshot/Beta Versions of SolversLib
+    maven {
+        url "https://repo.dairy.foundation/snapshots"
+    }
+}
+
 dependencies {
     implementation project(':FtcRobotController')
+    // implementation "org.ftclib.ftclib:core:2.1.1" remove FTCLib core
+    implementation "org.solverslib:core:0.3.4" // core
+    implementation "org.solverslib:pedroPathing:0.3.4" // pedroPathing
+    implementation "org.solverslib:photon:0.3.4" // photon
 }
