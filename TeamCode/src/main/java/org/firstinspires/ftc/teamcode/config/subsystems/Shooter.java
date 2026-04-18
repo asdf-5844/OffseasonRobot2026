@@ -6,6 +6,7 @@ import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 import com.qualcomm.robotcore.hardware.PIDFCoefficients;
 import com.qualcomm.robotcore.hardware.Servo;
+import com.qualcomm.robotcore.hardware.configuration.typecontainers.MotorConfigurationType;
 import com.qualcomm.robotcore.util.ElapsedTime;
 
 import org.firstinspires.ftc.teamcode.config.subsystems.RGB;
@@ -41,6 +42,14 @@ public class Shooter {
         flywheelMotorLeft.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         flywheelMotorRight.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
 
+        MotorConfigurationType leftType = flywheelMotorLeft.getMotorType().clone();
+        leftType.setAchieveableMaxRPMFraction(1.0);
+        flywheelMotorLeft.setMotorType(leftType);
+
+        MotorConfigurationType rightType = flywheelMotorRight.getMotorType().clone();
+        rightType.setAchieveableMaxRPMFraction(1.0);
+        flywheelMotorRight.setMotorType(rightType);
+
         flywheelMotorLeft.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
         flywheelMotorRight.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
 
@@ -62,7 +71,7 @@ public class Shooter {
     }
 
     public void setTargetVelocity(double velocity) {
-        targetVelocity = velocity;
+        this.targetVelocity = targetVelocity;
     }
     public void requestSpinUp(double velocity) {
         targetVelocity = velocity;
