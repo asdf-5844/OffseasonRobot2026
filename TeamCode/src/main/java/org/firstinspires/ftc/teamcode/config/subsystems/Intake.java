@@ -15,7 +15,7 @@ public class Intake {
     private IntakeState state = IntakeState.STOP;
     private final DcMotorEx intake;
 
-    private RGB ballLight;
+    private final RGB ballLight;
     // Tune current levels
     double ONE_BALL = 2.0;
     double TWO_BALLS = 3.5;
